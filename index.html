@@ -5,598 +5,376 @@
 <meta name="viewport" content="width=794px">
 <title>Thesis Summary — Abinash Satapathy</title>
 <style>
-
 @page { size: A4; margin: 0; }
 @media print {
   html, body { background: white; margin: 0; padding: 0; }
-  .page { box-shadow: none !important; width: 210mm; min-height: 297mm; }
+  .page { box-shadow: none !important; width: 210mm; }
+  .lang-btn { display: none; }
 }
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
-  --navy:       #1F3864;
-  --navy-mid:   #2A4B7C;
-  --steel:      #2E74B5;
-  --steel-mid:  #5B9BD5;
-  --steel-lt:   #9DC3E6;
-  --gold:       #C8960C;
-  --gold-lt:    #FEF3C7;
-  --green:      #1E6644;
-  --green-lt:   #D1FAE5;
-  --bg-page:    #F5F8FC;
-  --bg-white:   #FFFFFF;
-  --border:     #D6E4F0;
-  --border-lt:  #EAF1F8;
-  --txt-dark:   #1A2535;
-  --txt-mid:    #374861;
-  --txt-light:  #6B82A0;
-  --bar-gray1:  #7A8A9A;
-  --bar-gray2:  #9AAABBA;
+  --navy:     #1F3864; --steel: #2E74B5; --steel-mid: #5B9BD5;
+  --gold:     #C8960C; --green: #1E6644;
+  --bg-page:  #F5F8FC; --bg-white: #FFFFFF;
+  --border:   #D6E4F0; --border-lt: #EAF1F8;
+  --txt-dark: #1A2535; --txt-mid: #374861; --txt-light: #6B82A0;
 }
-
 body {
-  font-family: 'Calibri', 'Trebuchet MS', 'Segoe UI', system-ui, -apple-system, sans-serif;
-  background: #A8B8C8;
-  display: flex;
-  justify-content: center;
+  font-family: 'Calibri','Trebuchet MS','Segoe UI',system-ui,sans-serif;
+  background: #A8B8C8; display: flex; justify-content: center;
   padding: 28px 20px 36px;
-  -webkit-print-color-adjust: exact;
-  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
 }
-
-/* ── PAGE CONTAINER ────────────────────────────────────────── */
 .page {
-  width: 794px;
-  min-height: 1060px;
-  background: var(--bg-white);
+  width: 794px; background: var(--bg-white);
   box-shadow: 0 6px 40px rgba(0,0,0,0.28);
-  display: flex;
-  flex-direction: column;
+  display: flex; flex-direction: column;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   HEADER
-══════════════════════════════════════════════════════════════ */
-.hdr {
-  background: var(--navy);
-  padding: 15px 24px 13px;
-  flex-shrink: 0;
-}
-.hdr-eyebrow {
-  font-size: 7px;
-  letter-spacing: 2.2px;
-  text-transform: uppercase;
-  color: #6A92B8;
-  margin-bottom: 5px;
-  font-weight: 400;
-}
-.hdr-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: #FFFFFF;
-  line-height: 1.28;
-  margin-bottom: 10px;
-  letter-spacing: 0.1px;
-  max-width: 700px;
-}
-.hdr-meta {
-  display: flex;
-  align-items: center;
-  font-size: 7.5px;
-  color: #95B5D0;
-  flex-wrap: nowrap;
-  overflow: hidden;
-}
-.hm {
-  padding-right: 11px;
-  margin-right: 11px;
-  border-right: 1px solid #2E4A6A;
-  white-space: nowrap;
-  flex-shrink: 0;
-  line-height: 1.5;
-}
-.hm:last-child { border-right: none; padding-right: 0; margin-right: 0; }
-.hm-lbl { color: #4E7090; margin-right: 2px; }
-.hm-val { color: #C0D8EC; }
+/* ── HEADER ── */
+.hdr { background: var(--navy); padding: 16px 24px 14px; flex-shrink: 0; position: relative; }
+.hdr-eyebrow { font-size: 7.5px; letter-spacing: 2.2px; text-transform: uppercase; color: #6A92B8; margin-bottom: 5px; }
+.hdr-title { font-size: 15px; font-weight: 700; color: #fff; line-height: 1.28; margin-bottom: 10px; max-width: 680px; }
+.hdr-meta { display: flex; align-items: center; font-size: 8px; color: #95B5D0; flex-wrap: nowrap; overflow: hidden; padding-right: 80px; }
+.hm { padding-right: 11px; margin-right: 11px; border-right: 1px solid #2E4A6A; white-space: nowrap; flex-shrink: 0; }
+.hm:last-child { border-right: none; }
+.hm-lbl  { color: #4E7090; margin-right: 2px; }
+.hm-val  { color: #C0D8EC; }
 .hm-link { color: #7EC0E0; text-decoration: none; }
 
-/* ═══════════════════════════════════════════════════════════
-   MAIN — TWO COLUMNS
-══════════════════════════════════════════════════════════════ */
-.main {
-  flex: 1;
-  display: flex;
-  min-height: 0;
+/* Lang toggle */
+.lang-btn {
+  position: absolute; top: 14px; right: 18px;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 5px; padding: 5px 10px; cursor: pointer;
+  font-family: inherit; display: flex; align-items: center; gap: 6px;
+  transition: background 0.15s;
 }
+.lang-btn:hover { background: rgba(255,255,255,0.16); }
+.lopt { font-size: 10px; font-weight: 700; letter-spacing: 1px; color: #4E7090; transition: color 0.15s; }
+.lopt.active { color: #FFFFFF; }
+.lsep { font-size: 10px; color: rgba(255,255,255,0.2); }
 
-/* LEFT COLUMN 55% */
-.col-l {
-  width: 55%;
-  padding: 16px 15px 14px 22px;
-  border-right: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-/* RIGHT COLUMN 45% */
-.col-r {
-  width: 45%;
-  padding: 16px 20px 14px 17px;
-  background: var(--bg-page);
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-/* Section label */
-.sl {
-  font-size: 6.5px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--steel);
-  font-weight: 700;
-  padding-bottom: 4px;
-  border-bottom: 1.5px solid var(--steel);
-  margin-bottom: 8px;
-}
-
-/* ── LEFT: Context paragraph ───────────────────────────── */
-.ctx {
-  font-size: 8.5px;
-  line-height: 1.62;
-  color: var(--txt-mid);
-}
-
-/* ── LEFT: Methodology bullets ─────────────────────────── */
-.mlist {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-.mlist li {
-  font-size: 8px;
-  line-height: 1.48;
-  color: var(--txt-mid);
-  padding-left: 13px;
-  position: relative;
-}
-.mlist li::before {
-  content: '▸';
-  position: absolute;
-  left: 0;
-  top: 1px;
-  color: var(--steel);
-  font-size: 7px;
-}
+/* ── MAIN ── */
+.main { flex: 1; display: flex; min-height: 0; }
+.col-l { width: 55%; padding: 17px 16px 15px 22px; border-right: 1px solid var(--border); display: flex; flex-direction: column; gap: 15px; }
+.col-r { width: 45%; padding: 17px 20px 15px 18px; background: var(--bg-page); display: flex; flex-direction: column; gap: 14px; }
+.sl { font-size: 7px; letter-spacing: 2px; text-transform: uppercase; color: var(--steel); font-weight: 700; padding-bottom: 4px; border-bottom: 1.5px solid var(--steel); margin-bottom: 9px; }
+.ctx { font-size: 9.5px; line-height: 1.65; color: var(--txt-mid); }
+.mlist { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.mlist li { font-size: 8.5px; line-height: 1.5; color: var(--txt-mid); padding-left: 14px; position: relative; }
+.mlist li::before { content: '▸'; position: absolute; left: 0; top: 1px; color: var(--steel); font-size: 7.5px; }
 .mlist b { color: var(--navy); font-weight: 600; }
-
-/* ── LEFT: Results table ───────────────────────────────── */
-.rt {
-  width: 100%;
-  border-collapse: collapse;
-}
-.rt thead th {
-  font-size: 6.5px;
-  letter-spacing: 0.9px;
-  text-transform: uppercase;
-  color: var(--txt-light);
-  font-weight: 600;
-  padding: 5px 6px;
-  text-align: left;
-  border-bottom: 1.5px solid var(--navy);
-  white-space: nowrap;
-}
-.rt tbody td {
-  font-size: 8px;
-  padding: 5px 6px;
-  border-bottom: 1px solid var(--border-lt);
-  color: var(--txt-dark);
-  vertical-align: middle;
-  white-space: nowrap;
-}
-/* Winner row */
-.rt tbody tr.w td {
-  background: var(--navy);
-  color: #FFFFFF;
-  font-weight: 600;
-}
-.rn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 17px;
-  height: 17px;
-  border-radius: 50%;
-  background: var(--border);
-  font-size: 7.5px;
-  font-weight: 700;
-  color: var(--navy);
-  vertical-align: middle;
-}
+.rt { width: 100%; border-collapse: collapse; }
+.rt thead th { font-size: 7.5px; letter-spacing: 0.8px; text-transform: uppercase; color: var(--txt-light); font-weight: 600; padding: 5px 6px; text-align: left; border-bottom: 1.5px solid var(--navy); white-space: nowrap; }
+.rt tbody td { font-size: 9px; padding: 5.5px 6px; border-bottom: 1px solid var(--border-lt); color: var(--txt-dark); vertical-align: middle; white-space: nowrap; }
+.rt tbody tr.w td { background: var(--navy); color: #fff; font-weight: 600; }
+.rn { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; background: var(--border); font-size: 8px; font-weight: 700; color: var(--navy); }
 .w .rn { background: #F6C026; color: var(--navy); }
-.spv {
-  font-weight: 700;
-  letter-spacing: 0.2px;
-  font-variant-numeric: tabular-nums;
-}
+.spv { font-weight: 700; letter-spacing: 0.2px; }
 .w .spv { color: #FDE68A; }
-.pb {
-  display: inline-block;
-  font-size: 7px;
-  padding: 2px 5px;
-  border-radius: 8px;
-  font-weight: 600;
-  line-height: 1.3;
-}
-.pb-w  { background: rgba(255,255,255,0.15); color: #FDE68A; }
-.pb-p  { background: #E4F4EB; color: #1E6644; }
-.pb-n  { background: #FEE2E2; color: #991B1B; }
-.pb-b  { background: #EDF2F7; color: #4A5568; }
-
-/* ═══════════════════════════════════════════════════════════
-   RIGHT: SVG BAR CHART
-══════════════════════════════════════════════════════════════ */
+.pb { display: inline-block; font-size: 7.5px; padding: 2px 5px; border-radius: 8px; font-weight: 600; }
+.pb-w { background: rgba(255,255,255,0.18); color: #FDE68A; }
+.pb-p { background: #E4F4EB; color: #1E6644; }
+.pb-n { background: #FEE2E2; color: #991B1B; }
+.pb-b { background: #EDF2F7; color: #4A5568; }
+.table-note { font-size: 7.5px; color: var(--txt-light); margin-top: 6px; line-height: 1.5; font-style: italic; }
 .chart-wrap { width: 100%; line-height: 0; }
-
-/* ═══════════════════════════════════════════════════════════
-   RIGHT: KEY FINDINGS
-══════════════════════════════════════════════════════════════ */
-.findings-col {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.fd {
-  background: var(--bg-white);
-  border-left: 3px solid var(--steel);
-  padding: 7px 10px 7px 10px;
-  border-radius: 0 3px 3px 0;
-}
+.chart-legend { display: flex; gap: 10px; margin-top: 6px; flex-wrap: wrap; }
+.cl-item { display: flex; align-items: center; gap: 4px; font-size: 7px; color: var(--txt-light); }
+.cl-swatch { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+.findings-col { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+.fd { background: var(--bg-white); border-left: 3px solid var(--steel); padding: 8px 10px; border-radius: 0 3px 3px 0; }
 .fd.fg { border-left-color: var(--gold); }
 .fd.fv { border-left-color: var(--green); }
 .fd.fn { border-left-color: var(--navy); }
-
-.fd-lbl {
-  font-size: 6.5px;
-  text-transform: uppercase;
-  letter-spacing: 1.3px;
-  color: var(--txt-light);
-  margin-bottom: 3px;
-  font-weight: 600;
-}
-.fd-num {
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.05;
-  color: var(--navy);
-  margin-bottom: 2px;
-  letter-spacing: -0.3px;
-}
+.fd-lbl { font-size: 7px; text-transform: uppercase; letter-spacing: 1.3px; color: var(--txt-light); margin-bottom: 3px; font-weight: 600; }
+.fd-num { font-size: 20px; font-weight: 700; line-height: 1.05; color: var(--navy); margin-bottom: 3px; letter-spacing: -0.3px; }
 .fd-num.ng { color: var(--gold); }
 .fd-num.nv { color: var(--green); }
-.fd-txt {
-  font-size: 7.5px;
-  color: var(--txt-mid);
-  line-height: 1.5;
-}
+.fd-txt { font-size: 8.5px; color: var(--txt-mid); line-height: 1.52; }
 .fd-txt b { color: var(--txt-dark); font-weight: 600; }
-
-/* ═══════════════════════════════════════════════════════════
-   FOOTER STRIP
-══════════════════════════════════════════════════════════════ */
-.ftr {
-  background: var(--navy);
-  padding: 11px 24px;
-  display: flex;
-  gap: 0;
-  flex-shrink: 0;
-}
-.fts {
-  padding-right: 18px;
-  margin-right: 18px;
-  border-right: 1px solid #253C5E;
-  min-width: 0;
-}
-.fts:last-child {
-  border-right: none;
-  padding-right: 0;
-  margin-right: 0;
-  flex: 1;
-}
-.fts-lbl {
-  font-size: 6.5px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #5078A0;
-  margin-bottom: 5px;
-  padding-bottom: 3px;
-  border-bottom: 1px solid #233558;
-}
-.fts-body {
-  font-size: 8px;
-  color: #8AAAC8;
-  line-height: 1.58;
-}
+.ftr { background: var(--navy); padding: 12px 24px; display: flex; gap: 0; flex-shrink: 0; }
+.fts { padding-right: 18px; margin-right: 18px; border-right: 1px solid #253C5E; min-width: 0; }
+.fts:last-child { border-right: none; padding-right: 0; margin-right: 0; flex: 1; }
+.fts-lbl { font-size: 7px; letter-spacing: 2px; text-transform: uppercase; color: #5078A0; margin-bottom: 5px; padding-bottom: 3px; border-bottom: 1px solid #233558; }
+.fts-body { font-size: 8.5px; color: #8AAAC8; line-height: 1.58; }
 .fts-body b { color: #D0E6F5; }
-
 </style>
 </head>
 <body>
 <div class="page">
 
-<!-- ════════════════════════════════════════════════════════
-     HEADER
-═════════════════════════════════════════════════════════════ -->
 <header class="hdr">
-  <div class="hdr-eyebrow">Master's Thesis &nbsp;·&nbsp; M.Eng. Smart Energy Systems &nbsp;·&nbsp; Hochschule Ansbach &nbsp;·&nbsp; 2026</div>
-  <div class="hdr-title">Comparison of the Revenue Potential of Ground-Mounted PV Installations with Different Orientations</div>
+  <button class="lang-btn" id="lang-btn" onclick="toggleLang()" title="Switch language">
+    <span class="lopt active" id="opt-en">EN</span>
+    <span class="lsep">|</span>
+    <span class="lopt" id="opt-de">DE</span>
+  </button>
+  <div class="hdr-eyebrow" data-i18n="eyebrow">Master's Thesis · M.Eng. Smart Energy Systems · Hochschule Ansbach · 2026</div>
+  <div class="hdr-title" data-i18n="title">Comparison of the Revenue Potential of Ground-Mounted PV Installations with Different Orientations</div>
   <div class="hdr-meta">
-    <div class="hm"><span class="hm-lbl">Author</span><span class="hm-val">Abinash Satapathy, M.Eng.</span></div>
-    <div class="hm"><span class="hm-lbl">Supervisor</span><span class="hm-val">Prof. Dr. Georg Rosenbauer</span></div>
-    <div class="hm"><span class="hm-lbl">Institution</span><span class="hm-val">Hochschule Ansbach – Hochschule für angewandte Wissenschaften</span></div>
-    <div class="hm"><span class="hm-lbl">Email</span><a class="hm-link" href="mailto:abinash.satapathy.de@gmail.com">abinash.satapathy.de@gmail.com</a></div>
-    <div class="hm"><span class="hm-lbl">LinkedIn</span><a class="hm-link" href="https://linkedin.com/in/abinash-satapathy-b1a4aa271">abinash-satapathy-b1a4aa271</a></div>
+    <div class="hm"><span class="hm-lbl" data-i18n="lbl_author">Author</span> <span class="hm-val">Abinash Satapathy, M.Eng.</span></div>
+    <div class="hm"><span class="hm-lbl" data-i18n="lbl_supervisor">Supervisor</span> <span class="hm-val">Prof. Dr. Georg Rosenbauer</span></div>
+    <div class="hm"><span class="hm-lbl" data-i18n="lbl_institution">Institution</span> <span class="hm-val">Hochschule Ansbach – Hochschule für angewandte Wissenschaften</span></div>
+    <div class="hm"><span class="hm-lbl" data-i18n="lbl_email">Email</span> <a class="hm-link" href="mailto:abinash.satapathy.de@gmail.com">abinash.satapathy.de@gmail.com</a></div>
+    <div class="hm"><span class="hm-lbl" data-i18n="lbl_linkedin">LinkedIn</span> <a class="hm-link" href="https://linkedin.com/in/abinash-satapathy-b1a4aa271">abinash-satapathy-b1a4aa271</a></div>
   </div>
 </header>
 
-<!-- ════════════════════════════════════════════════════════
-     MAIN
-═════════════════════════════════════════════════════════════ -->
 <main class="main">
-
-  <!-- ── LEFT COLUMN ───────────────────────────────────── -->
   <div class="col-l">
 
     <div>
-      <div class="sl">Research Question &amp; Context</div>
-      <p class="ctx">Which ground-mounted PV orientation maximises 20-year revenue potential under the German EEG Direktvermarktung framework? This study analyses six bifacial configurations — vertical 90° east/west-facing and conventional 30° south-facing — at two capacity thresholds in Bavaria over a 2026–2045 horizon, quantifying how orientation, EEG §35a capacity thresholds, and §51 curtailment interact to determine long-run revenue potential for agri-PV and ground-mounted installations.</p>
+      <div class="sl" data-i18n="sl_context">Research Question &amp; Context</div>
+      <p class="ctx" data-i18n="ctx">Which ground-mounted PV orientation maximises 20-year revenue potential under the German EEG Direktvermarktung framework? This study analyses six bifacial configurations — vertical 90° east/west-facing and conventional 30° south-facing — at two EEG §35a capacity thresholds (999 kWp and 1,001 kWp) in Bavaria, over a full 2026–2045 horizon. By combining PV*SOL energy yield simulations with SMARD market data and netztransparenz.de Monatsmarktwert projections, the study quantifies how orientation, EEG tariff structure, and §51 negative-price curtailment together determine long-run revenue potential for agrivoltaic and commercial ground-mounted installations.</p>
     </div>
 
     <div>
-      <div class="sl">Methodology</div>
+      <div class="sl" data-i18n="sl_method">Methodology</div>
       <ul class="mlist">
-        <li><b>PV Simulation:</b> PV*SOL Premium with DWD Nürnberg Station hourly irradiance data (8,784 hours, 2024); all systems bifacial, ground-mounted, Bavaria</li>
-        <li><b>Market Data:</b> SMARD Day-Ahead prices + netztransparenz.de Monatsmarktwert 2024; prices projected across full 2026–2045 horizon</li>
-        <li><b>Revenue Metric:</b> SUM PV — discounted cumulative 20-year revenue; CAPEX excluded for orientation-only comparison</li>
-        <li><b>Financial Parameters:</b> 4% discount rate &nbsp;·&nbsp; LUXOR Solar datasheet degradation: 1.0% Year 1, then 0.345%/year</li>
-        <li><b>Scenarios:</b> With curtailment (§51 EEG compliance — zero revenue at negative Day-Ahead prices) and without curtailment, both with full degradation</li>
+        <li data-i18n="m1"><b>PV Simulation:</b> PV*SOL Premium with DWD Nürnberg Station hourly irradiance (8,784 hours, 2024); all six systems bifacial ground-mounted in Bavaria; rear-side bifacial gain and soiling losses included</li>
+        <li data-i18n="m2"><b>Market Data:</b> SMARD Day-Ahead prices + netztransparenz.de Monatsmarktwert 2024; Marktprämie per hour = (AW − MMW) × eligible MWh where AW &gt; MMW; price series projected across full 2026–2045 horizon</li>
+        <li data-i18n="m3"><b>Revenue Metric:</b> SUM PV — discounted present value of cumulative 20-year Direktvermarktung revenue (spot + Marktprämie); CAPEX excluded to isolate orientation-driven revenue differences</li>
+        <li data-i18n="m4"><b>Financial Parameters:</b> 4% discount rate · LUXOR Solar datasheet degradation: 1.0% in Year 1, then 0.345%/year linear for remaining 19 years</li>
+        <li data-i18n="m5"><b>Scenarios:</b> With §51 EEG curtailment (zero revenue at negative Day-Ahead prices) and without curtailment; degradation applied identically in both scenarios across all six configurations</li>
       </ul>
     </div>
 
     <div>
-      <div class="sl">Results — Primary Scenario (With Degradation &amp; §51 Curtailment)</div>
+      <div class="sl" data-i18n="sl_results">Results — Primary Scenario (With Degradation &amp; §51 Curtailment)</div>
       <table class="rt">
         <thead>
           <tr>
             <th style="width:26px">#</th>
             <th>System</th>
-            <th>Orientation</th>
+            <th data-i18n="th_orient">Orientation</th>
             <th>AW (€/MWh)</th>
             <th>SUM PV</th>
-            <th>vs. Baseline</th>
+            <th data-i18n="th_vs">vs. S30_1MWp</th>
           </tr>
         </thead>
         <tbody>
           <tr class="w">
-            <td><span class="rn">1</span></td>
-            <td>W90_999kWp</td>
-            <td>Vertical 90° West</td>
-            <td>95.0</td>
-            <td><span class="spv">€ 1,701,471</span></td>
-            <td><span class="pb pb-w">+54.9%</span></td>
+            <td><span class="rn">1</span></td><td>W90_999kWp</td>
+            <td data-i18n="orient_west">Vertical 90° West</td><td>95.0</td>
+            <td><span class="spv">€ 1,701,471</span></td><td><span class="pb pb-w">+54.9%</span></td>
           </tr>
           <tr>
-            <td><span class="rn">2</span></td>
-            <td>W90_1MWp</td>
-            <td>Vertical 90° West</td>
-            <td>82.3</td>
-            <td><span class="spv">€ 1,431,768</span></td>
-            <td><span class="pb pb-p">+28.0%</span></td>
+            <td><span class="rn">2</span></td><td>W90_1MWp</td>
+            <td data-i18n="orient_west">Vertical 90° West</td><td>82.3</td>
+            <td><span class="spv">€ 1,431,768</span></td><td><span class="pb pb-p">+28.0%</span></td>
           </tr>
           <tr>
-            <td><span class="rn">3</span></td>
-            <td>E90_999kWp</td>
-            <td>Vertical 90° East</td>
-            <td>95.0</td>
-            <td><span class="spv">€ 1,257,842</span></td>
-            <td><span class="pb pb-p">+12.4%</span></td>
+            <td><span class="rn">3</span></td><td>E90_999kWp</td>
+            <td data-i18n="orient_east">Vertical 90° East</td><td>95.0</td>
+            <td><span class="spv">€ 1,257,842</span></td><td><span class="pb pb-p">+12.4%</span></td>
           </tr>
           <tr>
-            <td><span class="rn">4</span></td>
-            <td>E90_1MWp</td>
-            <td>Vertical 90° East</td>
-            <td>82.3</td>
-            <td><span class="spv">€ 1,142,834</span></td>
-            <td><span class="pb pb-p">+2.1%</span></td>
+            <td><span class="rn">4</span></td><td>E90_1MWp</td>
+            <td data-i18n="orient_east">Vertical 90° East</td><td>82.3</td>
+            <td><span class="spv">€ 1,142,834</span></td><td><span class="pb pb-p">+2.1%</span></td>
           </tr>
           <tr>
-            <td><span class="rn">5</span></td>
-            <td>S30_1MWp</td>
-            <td>South 30° tilt</td>
-            <td>70.3</td>
-            <td><span class="spv">€ 1,118,703</span></td>
-            <td><span class="pb pb-b">Baseline</span></td>
+            <td><span class="rn">5</span></td><td>S30_1MWp</td>
+            <td data-i18n="orient_south">South 30° tilt</td><td>70.3</td>
+            <td><span class="spv">€ 1,118,703</span></td><td><span class="pb pb-b" data-i18n="td_baseline">Baseline</span></td>
           </tr>
           <tr>
-            <td><span class="rn">6</span></td>
-            <td>S30_999kWp</td>
-            <td>South 30° tilt</td>
-            <td>70.0</td>
-            <td><span class="spv">€ 1,109,509</span></td>
-            <td><span class="pb pb-n">−0.8%</span></td>
+            <td><span class="rn">6</span></td><td>S30_999kWp</td>
+            <td data-i18n="orient_south">South 30° tilt</td><td>70.0</td>
+            <td><span class="spv">€ 1,109,509</span></td><td><span class="pb pb-n">−0.8%</span></td>
           </tr>
         </tbody>
       </table>
+      <p class="table-note" data-i18n="table_note">AW = Anzulegender Wert (EEG reference tariff). SUM PV = discounted 20-year present-value revenue (Direktvermarktung: spot + Marktprämie). LUXOR degradation and §51 curtailment applied. All systems bifacial, Bavaria, 2026–2045.</p>
     </div>
+  </div>
 
-  </div><!-- /col-l -->
-
-  <!-- ── RIGHT COLUMN ──────────────────────────────────── -->
   <div class="col-r">
-
     <div>
-      <div class="sl">20-Year SUM PV by Configuration</div>
+      <div class="sl" data-i18n="sl_chart">20-Year SUM PV by Configuration</div>
       <div class="chart-wrap">
-        <!--
-          SVG layout:
-          viewBox 0 0 308 190
-          Label zone: x=0–86 (text right-aligned at x=84)
-          Bar start: x=90
-          Scale: 185px = €1,701,471  →  1px = €9,197
-          €500k  → x = 90 + 54  = 144
-          €1.0M  → x = 90 + 109 = 199
-          €1.5M  → x = 90 + 163 = 253
-
-          Bar widths:
-          W90_999: 185px  ends x=275
-          W90_1MW: 156px  ends x=246
-          E90_999: 137px  ends x=227
-          E90_1MW: 124px  ends x=214
-          S30_1MW: 122px  ends x=212
-          S30_999: 121px  ends x=211
-
-          Row Y tops (22px bar, 8px gap):
-          Row1 y=5,  label y=19.5
-          Row2 y=35, label y=49.5
-          Row3 y=65, label y=79.5
-          Row4 y=95, label y=109.5
-          Row5 y=125,label y=139.5
-          Row6 y=155,label y=169.5
-        -->
-        <svg viewBox="0 0 308 190" xmlns="http://www.w3.org/2000/svg"
-             width="100%" height="auto" style="display:block;">
-
-          <!-- Grid lines -->
+        <svg viewBox="0 0 308 190" xmlns="http://www.w3.org/2000/svg" width="100%" height="auto" style="display:block;">
           <line x1="90" y1="3" x2="90" y2="178" stroke="#C8D8E8" stroke-width="0.8"/>
           <line x1="144" y1="3" x2="144" y2="178" stroke="#DBE9F4" stroke-width="0.5" stroke-dasharray="2,3"/>
           <line x1="199" y1="3" x2="199" y2="178" stroke="#DBE9F4" stroke-width="0.5" stroke-dasharray="2,3"/>
           <line x1="253" y1="3" x2="253" y2="178" stroke="#DBE9F4" stroke-width="0.5" stroke-dasharray="2,3"/>
-
-          <!-- Axis tick labels -->
           <text x="90"  y="188" font-family="Calibri,system-ui,sans-serif" font-size="6.5" fill="#8A9EB8" text-anchor="middle">€ 0</text>
           <text x="144" y="188" font-family="Calibri,system-ui,sans-serif" font-size="6.5" fill="#8A9EB8" text-anchor="middle">€ 500k</text>
           <text x="199" y="188" font-family="Calibri,system-ui,sans-serif" font-size="6.5" fill="#8A9EB8" text-anchor="middle">€ 1.0M</text>
           <text x="253" y="188" font-family="Calibri,system-ui,sans-serif" font-size="6.5" fill="#8A9EB8" text-anchor="middle">€ 1.5M</text>
-
-          <!-- ── BAR 1: W90_999kWp  WINNER  (185px) ────── -->
           <rect x="90" y="5" width="185" height="22" fill="#1F3864"/>
-          <!-- Gold left-accent stripe — the signature element -->
-          <rect x="90" y="5" width="4"   height="22" fill="#F6C026"/>
-          <text x="84" y="20" font-family="Calibri,system-ui,sans-serif" font-size="7.5"
-                fill="#1A2535" text-anchor="end" font-weight="600">W90_999kWp</text>
-          <text x="268" y="20" font-family="Calibri,system-ui,sans-serif" font-size="7"
-                fill="#FFFFFF" text-anchor="end">€ 1,701k</text>
-          <!-- +54.9% floating badge -->
+          <rect x="90" y="5" width="4" height="22" fill="#F6C026"/>
+          <text x="84" y="20" font-family="Calibri,system-ui,sans-serif" font-size="7.5" fill="#1A2535" text-anchor="end" font-weight="600">W90_999kWp</text>
+          <text x="268" y="20" font-family="Calibri,system-ui,sans-serif" font-size="7" fill="#fff" text-anchor="end">€ 1,701k</text>
           <rect x="278" y="7" width="30" height="18" rx="3" fill="#F6C026"/>
-          <text x="293" y="19.5" font-family="Calibri,system-ui,sans-serif" font-size="7"
-                fill="#1F3864" text-anchor="middle" font-weight="700">+54.9%</text>
-
-          <!-- ── BAR 2: W90_1MWp  (156px) ──────────────── -->
+          <text x="293" y="19.5" font-family="Calibri,system-ui,sans-serif" font-size="7" fill="#1F3864" text-anchor="middle" font-weight="700">+54.9%</text>
           <rect x="90" y="35" width="156" height="22" fill="#2E74B5"/>
-          <text x="84" y="50" font-family="Calibri,system-ui,sans-serif" font-size="7.5"
-                fill="#1A2535" text-anchor="end">W90_1MWp</text>
-          <text x="240" y="50" font-family="Calibri,system-ui,sans-serif" font-size="7"
-                fill="#FFFFFF" text-anchor="end">€ 1,432k</text>
-          <text x="249" y="50" font-family="Calibri,system-ui,sans-serif" font-size="7"
-                fill="#2E74B5">+28.0%</text>
-
-          <!-- ── BAR 3: E90_999kWp  (137px) ────────────── -->
+          <text x="84" y="50" font-family="Calibri,system-ui,sans-serif" font-size="7.5" fill="#1A2535" text-anchor="end">W90_1MWp</text>
+          <text x="240" y="50" font-family="Calibri,system-ui,sans-serif" font-size="7" fill="#fff" text-anchor="end">€ 1,432k</text>
+          <text x="249" y="50" font-family="Calibri,system-ui,sans-serif" font-size="7" fill="#2E74B5">+28.0%</text>
           <rect x="90" y="65" width="137" height="22" fill="#5B9BD5"/>
-          <text x="84" y="80" font-family="Calibri,system-ui,sans-serif" font-size="7.5"
-                fill="#1A2535" text-anchor="end">E90_999kWp</text>
-          <text x="221" y="80" font-family="Calibri,system-ui,sans-serif" font-size="7"
-                fill="#FFFFFF" text-anchor="end">€ 1,258k</text>
-          <text x="230" y="80" font-family="Calibri,system-ui,sans-serif" font-size="7"
-                fill="#4A88B5">+12.4%</text>
-
-          <!-- ── BAR 4: E90_1MWp  (124px) ──────────────── -->
+          <text x="84" y="80" font-family="Calibri,system-ui,sans-serif" font-size="7.5" fill="#1A2535" text-anchor="end">E90_999kWp</text>
+          <text x="221" y="80" font-family="Calibri,system-ui,sans-serif" font-size="7" fill="#fff" text-anchor="end">€ 1,258k</text>
+          <text x="230" y="80" font-family="Calibri,system-ui,sans-serif" font-size="7" fill="#4A88B5">+12.4%</text>
           <rect x="90" y="95" width="124" height="22" fill="#7EB3D8"/>
-          <text x="84" y="110" font-family="Calibri,system-ui,sans-serif" font-size="7.5"
-                fill="#1A2535" text-anchor="end">E90_1MWp</text>
-          <text x="208" y="110" font-family="Calibri,system-ui,sans-serif" font-size="7"
-                fill="#FFFFFF" text-anchor="end">€ 1,143k</text>
-          <text x="217" y="110" font-family="Calibri,system-ui,sans-serif" font-size="7"
-                fill="#5580A0">+2.1%</text>
-
-          <!-- ── BAR 5: S30_1MWp  BASELINE  (122px) ────── -->
+          <text x="84" y="110" font-family="Calibri,system-ui,sans-serif" font-size="7.5" fill="#1A2535" text-anchor="end">E90_1MWp</text>
+          <text x="208" y="110" font-family="Calibri,system-ui,sans-serif" font-size="7" fill="#fff" text-anchor="end">€ 1,143k</text>
+          <text x="217" y="110" font-family="Calibri,system-ui,sans-serif" font-size="7" fill="#5580A0">+2.1%</text>
           <rect x="90" y="125" width="122" height="22" fill="#7A8A9A"/>
-          <text x="84" y="140" font-family="Calibri,system-ui,sans-serif" font-size="7.5"
-                fill="#1A2535" text-anchor="end">S30_1MWp</text>
-          <text x="206" y="140" font-family="Calibri,system-ui,sans-serif" font-size="7"
-                fill="#FFFFFF" text-anchor="end">€ 1,119k</text>
-          <text x="215" y="140" font-family="Calibri,system-ui,sans-serif" font-size="7"
-                fill="#7A8A9A">Baseline</text>
-
-          <!-- ── BAR 6: S30_999kWp  (121px) ────────────── -->
+          <text x="84" y="140" font-family="Calibri,system-ui,sans-serif" font-size="7.5" fill="#1A2535" text-anchor="end">S30_1MWp</text>
+          <text x="206" y="140" font-family="Calibri,system-ui,sans-serif" font-size="7" fill="#fff" text-anchor="end">€ 1,119k</text>
+          <text id="svg-baseline" x="215" y="140" font-family="Calibri,system-ui,sans-serif" font-size="7" fill="#7A8A9A" data-i18n="svg_baseline">Baseline</text>
           <rect x="90" y="155" width="121" height="22" fill="#9AAABB"/>
-          <text x="84" y="170" font-family="Calibri,system-ui,sans-serif" font-size="7.5"
-                fill="#1A2535" text-anchor="end">S30_999kWp</text>
-          <text x="205" y="170" font-family="Calibri,system-ui,sans-serif" font-size="7"
-                fill="#FFFFFF" text-anchor="end">€ 1,110k</text>
-          <text x="214" y="170" font-family="Calibri,system-ui,sans-serif" font-size="7"
-                fill="#B03A2E">−0.8%</text>
-
+          <text x="84" y="170" font-family="Calibri,system-ui,sans-serif" font-size="7.5" fill="#1A2535" text-anchor="end">S30_999kWp</text>
+          <text x="205" y="170" font-family="Calibri,system-ui,sans-serif" font-size="7" fill="#fff" text-anchor="end">€ 1,110k</text>
+          <text x="214" y="170" font-family="Calibri,system-ui,sans-serif" font-size="7" fill="#B03A2E">−0.8%</text>
         </svg>
       </div>
-    </div>
-
-    <!-- Key Findings -->
-    <div style="flex:1; display:flex; flex-direction:column;">
-      <div class="sl">Key Findings</div>
-      <div class="findings-col">
-
-        <div class="fd fg">
-          <div class="fd-lbl">Revenue Advantage Over Baseline</div>
-          <div class="fd-num ng">+ € 582,768</div>
-          <div class="fd-txt">W90_999kWp outperforms the S30_1MWp baseline by <b>54.9%</b> in 20-year discounted revenue — driven by its evening-peak generation profile complementing morning load and the preferential EEG agri-PV tariff.</div>
-        </div>
-
-        <div class="fd">
-          <div class="fd-lbl">EEG §35a Capacity Threshold Value</div>
-          <div class="fd-num">≈ € 267,000</div>
-          <div class="fd-txt">Keeping capacity below 1 MW (999 kWp) unlocks a 95.0 vs. 82.3 €/MWh tariff differential — worth approximately <b>€267,000 in additional revenue</b> for the west configuration over 20 years.</div>
-        </div>
-
-        <div class="fd fv">
-          <div class="fd-lbl">Orientation Value — Policy-Independent</div>
-          <div class="fd-num nv">+ 30.6%</div>
-          <div class="fd-txt">Under the "Basic" scenario (all systems at 70.3 €/MWh, EEG tariff advantage neutralised), W90_999kWp <b>still leads by +30.6%</b>, confirming orientation is the primary value driver independent of policy.</div>
-        </div>
-
-        <div class="fd fn">
-          <div class="fd-lbl">§51 EEG Curtailment Effect</div>
-          <div class="fd-txt">Enforcing §51 curtailment (zero revenue at negative Day-Ahead prices) <b>improves</b> revenue across all systems by +1.2% to +2.5% by eliminating negative-price losses — a counterintuitive result with direct implications for grid-coupled agri-PV design and EEG policy planning.</div>
-        </div>
-
+      <div class="chart-legend">
+        <div class="cl-item"><div class="cl-swatch" style="background:#1F3864"></div><span data-i18n="leg1">West 90° · &lt;1MW (Winner)</span></div>
+        <div class="cl-item"><div class="cl-swatch" style="background:#2E74B5"></div><span data-i18n="leg2">West 90° · ≥1MW</span></div>
+        <div class="cl-item"><div class="cl-swatch" style="background:#5B9BD5"></div><span data-i18n="leg3">East 90° · &lt;1MW</span></div>
+        <div class="cl-item"><div class="cl-swatch" style="background:#7EB3D8"></div><span data-i18n="leg4">East 90° · ≥1MW</span></div>
+        <div class="cl-item"><div class="cl-swatch" style="background:#7A8A9A"></div><span data-i18n="leg5">South 30° Baseline</span></div>
       </div>
     </div>
 
-  </div><!-- /col-r -->
-
-</main><!-- /main -->
-
-<!-- ════════════════════════════════════════════════════════
-     FOOTER STRIP
-═════════════════════════════════════════════════════════════ -->
-<footer class="ftr">
-  <div class="fts" style="flex:0.9">
-    <div class="fts-lbl">Scenarios Analysed</div>
-    <div class="fts-body">
-      <b>Primary:</b> §51 curtailment applied · LUXOR degradation (1.0% Yr 1 → 0.345%/yr)<br>
-      <b>Secondary:</b> No §51 curtailment · same degradation profile<br>
-      <b>Basic:</b> Uniform AW 70.3 €/MWh · curtailment applied · degradation applied
+    <div style="flex:1;display:flex;flex-direction:column;">
+      <div class="sl" data-i18n="sl_findings">Key Findings</div>
+      <div class="findings-col">
+        <div class="fd fg">
+          <div class="fd-lbl" data-i18n="fd_lbl1">Revenue Advantage Over Baseline</div>
+          <div class="fd-num ng">+ € 582,768</div>
+          <div class="fd-txt" data-i18n="fd_txt1">W90_999kWp outperforms S30_1MWp by <b>54.9%</b> over 20 discounted years. West-facing panels peak in the evening, when Day-Ahead prices are structurally higher than midday — amplifying revenue at comparable energy yields. Combined with the 95.0 €/MWh agri-PV EEG tariff, this creates a compounding dual advantage over south-facing alternatives.</div>
+        </div>
+        <div class="fd">
+          <div class="fd-lbl" data-i18n="fd_lbl2">EEG §35a Capacity Threshold Value</div>
+          <div class="fd-num">≈ € 267,000</div>
+          <div class="fd-txt" data-i18n="fd_txt2">Keeping installed capacity below 1 MW (999 kWp) unlocks the agrivoltaic EEG tariff of 95.0 vs. 82.3 €/MWh for ≥1 MW systems. This single project-sizing decision — the difference between a 999 kWp and 1,001 kWp installation — is worth approximately <b>€267,000 in additional discounted revenue</b> for the west configuration over 20 years.</div>
+        </div>
+        <div class="fd fv">
+          <div class="fd-lbl" data-i18n="fd_lbl3">Orientation Value — Policy-Independent</div>
+          <div class="fd-num nv">+ 30.6%</div>
+          <div class="fd-txt" data-i18n="fd_txt3">Under the "Basic" scenario — all six systems at the same 70.3 €/MWh EEG reference tariff, removing the agrivoltaic policy advantage entirely — W90_999kWp <b>still leads by +30.6%</b>. Orientation-driven market timing, not EEG tariff structure alone, is the primary revenue driver.</div>
+        </div>
+        <div class="fd fn">
+          <div class="fd-lbl" data-i18n="fd_lbl4">§51 EEG Curtailment Effect</div>
+          <div class="fd-txt" data-i18n="fd_txt4">Applying §51 curtailment — zero revenue at negative Day-Ahead prices — <b>improves</b> revenue by +1.2% to +2.5% across all configurations. Selling at negative prices actively reduces cumulative earnings — curtailment prevents those losses. This counterintuitive result has direct implications for inverter-level dispatch logic in grid-coupled agri-PV projects.</div>
+        </div>
+      </div>
     </div>
   </div>
+</main>
+
+<footer class="ftr">
+  <div class="fts" style="flex:0.85">
+    <div class="fts-lbl" data-i18n="sl_scenarios">Scenarios Analysed</div>
+    <div class="fts-body" data-i18n="scenarios_body"><b>Primary:</b> §51 curtailment applied · LUXOR degradation (1.0% Yr 1 → 0.345%/yr)<br><b>Secondary:</b> No §51 curtailment · same degradation profile<br><b>Basic:</b> Uniform AW 70.3 €/MWh · curtailment applied · degradation applied</div>
+  </div>
   <div class="fts">
-    <div class="fts-lbl">Conclusion</div>
-    <div class="fts-body">Vertical west-facing bifacial systems at sub-1 MW scale outperform conventional south-facing installations by <b>54.9%</b> in 20-year revenue under the German EEG framework. The combination of a <b>95.0 €/MWh</b> agrivoltaic tariff and a morning-load-complementary generation profile makes this configuration strategically superior for both landowners and grid operators.</div>
+    <div class="fts-lbl" data-i18n="sl_conclusion">Conclusion</div>
+    <div class="fts-body" data-i18n="conclusion_body">Vertical west-facing bifacial systems at sub-1 MW scale outperform conventional south-facing installations by <b>54.9%</b> in 20-year discounted revenue under the German EEG framework. The combination of a <b>95.0 €/MWh</b> agrivoltaic tariff and a morning-load-complementary generation profile makes this configuration strategically superior for both landowners and grid operators — and a compelling case for agri-PV adoption in post-EEG transition planning.</div>
   </div>
 </footer>
 
-</div><!-- /page -->
+</div>
+
+<script>
+const T = {
+  en: {
+    eyebrow: "Master's Thesis · M.Eng. Smart Energy Systems · Hochschule Ansbach · 2026",
+    title: "Comparison of the Revenue Potential of Ground-Mounted PV Installations with Different Orientations",
+    lbl_author: "Author", lbl_supervisor: "Supervisor", lbl_institution: "Institution", lbl_email: "Email", lbl_linkedin: "LinkedIn",
+    sl_context: "Research Question &amp; Context",
+    sl_method: "Methodology",
+    sl_results: "Results — Primary Scenario (With Degradation &amp; §51 Curtailment)",
+    sl_chart: "20-Year SUM PV by Configuration",
+    sl_findings: "Key Findings",
+    sl_scenarios: "Scenarios Analysed",
+    sl_conclusion: "Conclusion",
+    ctx: "Which ground-mounted PV orientation maximises 20-year revenue potential under the German EEG Direktvermarktung framework? This study analyses six bifacial configurations — vertical 90° east/west-facing and conventional 30° south-facing — at two EEG §35a capacity thresholds (999 kWp and 1,001 kWp) in Bavaria, over a full 2026–2045 horizon. By combining PV*SOL energy yield simulations with SMARD market data and netztransparenz.de Monatsmarktwert projections, the study quantifies how orientation, EEG tariff structure, and §51 negative-price curtailment together determine long-run revenue potential for agrivoltaic and commercial ground-mounted installations.",
+    m1: "<b>PV Simulation:</b> PV*SOL Premium with DWD Nürnberg Station hourly irradiance (8,784 hours, 2024); all six systems bifacial ground-mounted in Bavaria; rear-side bifacial gain and soiling losses included",
+    m2: "<b>Market Data:</b> SMARD Day-Ahead prices + netztransparenz.de Monatsmarktwert 2024; Marktprämie per hour = (AW − MMW) × eligible MWh where AW &gt; MMW; price series projected across full 2026–2045 horizon",
+    m3: "<b>Revenue Metric:</b> SUM PV — discounted present value of cumulative 20-year Direktvermarktung revenue (spot + Marktprämie); CAPEX excluded to isolate orientation-driven revenue differences",
+    m4: "<b>Financial Parameters:</b> 4% discount rate · LUXOR Solar datasheet degradation: 1.0% in Year 1, then 0.345%/year linear for remaining 19 years",
+    m5: "<b>Scenarios:</b> With §51 EEG curtailment (zero revenue at negative Day-Ahead prices) and without curtailment; degradation applied identically in both scenarios across all six configurations",
+    th_orient: "Orientation", th_vs: "vs. S30_1MWp",
+    orient_west: "Vertical 90° West", orient_east: "Vertical 90° East", orient_south: "South 30° tilt",
+    td_baseline: "Baseline",
+    table_note: "AW = Anzulegender Wert (EEG reference tariff). SUM PV = discounted 20-year present-value revenue (Direktvermarktung: spot + Marktprämie). LUXOR degradation and §51 curtailment applied. All systems bifacial, Bavaria, 2026–2045.",
+    leg1: "West 90° · &lt;1MW (Winner)", leg2: "West 90° · ≥1MW", leg3: "East 90° · &lt;1MW", leg4: "East 90° · ≥1MW", leg5: "South 30° Baseline",
+    svg_baseline: "Baseline",
+    fd_lbl1: "Revenue Advantage Over Baseline",
+    fd_txt1: "W90_999kWp outperforms S30_1MWp by <b>54.9%</b> over 20 discounted years. West-facing panels peak in the evening, when Day-Ahead prices are structurally higher than midday — amplifying revenue at comparable energy yields. Combined with the 95.0 €/MWh agri-PV EEG tariff, this creates a compounding dual advantage over south-facing alternatives.",
+    fd_lbl2: "EEG §35a Capacity Threshold Value",
+    fd_txt2: "Keeping installed capacity below 1 MW (999 kWp) unlocks the agrivoltaic EEG tariff of 95.0 vs. 82.3 €/MWh for ≥1 MW systems. This single project-sizing decision is worth approximately <b>€267,000 in additional discounted revenue</b> for the west configuration over 20 years.",
+    fd_lbl3: "Orientation Value — Policy-Independent",
+    fd_txt3: "Under the \"Basic\" scenario — all six systems at the same 70.3 €/MWh EEG reference tariff, agrivoltaic advantage removed — W90_999kWp <b>still leads by +30.6%</b>. Orientation-driven market timing, not EEG tariff structure alone, is the primary revenue driver.",
+    fd_lbl4: "§51 EEG Curtailment Effect",
+    fd_txt4: "Applying §51 curtailment — zero revenue at negative Day-Ahead prices — <b>improves</b> revenue by +1.2% to +2.5% across all configurations. Selling at negative prices actively reduces cumulative earnings — curtailment prevents those losses. This counterintuitive result has direct implications for inverter-level dispatch logic in grid-coupled agri-PV projects.",
+    scenarios_body: "<b>Primary:</b> §51 curtailment applied · LUXOR degradation (1.0% Yr 1 → 0.345%/yr)<br><b>Secondary:</b> No §51 curtailment · same degradation profile<br><b>Basic:</b> Uniform AW 70.3 €/MWh · curtailment applied · degradation applied",
+    conclusion_body: "Vertical west-facing bifacial systems at sub-1 MW scale outperform conventional south-facing installations by <b>54.9%</b> in 20-year discounted revenue under the German EEG framework. The combination of a <b>95.0 €/MWh</b> agrivoltaic tariff and a morning-load-complementary generation profile makes this configuration strategically superior for both landowners and grid operators — and a compelling case for agri-PV adoption in post-EEG transition planning."
+  },
+  de: {
+    eyebrow: "Masterarbeit · M.Eng. Smart Energy Systems · Hochschule Ansbach · 2026",
+    title: "Vergleich des Erlöspotenzials von Freiflächenphotovoltaikanlagen mit unterschiedlichen Ausrichtungen",
+    lbl_author: "Autor", lbl_supervisor: "Betreuer", lbl_institution: "Hochschule", lbl_email: "E-Mail", lbl_linkedin: "LinkedIn",
+    sl_context: "Forschungsfrage &amp; Kontext",
+    sl_method: "Methodik",
+    sl_results: "Ergebnisse — Primärszenario (Mit Degradation &amp; §51-Abschneidung)",
+    sl_chart: "20-Jahres-SUM PV nach Konfiguration",
+    sl_findings: "Wesentliche Erkenntnisse",
+    sl_scenarios: "Analysierte Szenarien",
+    sl_conclusion: "Fazit",
+    ctx: "Welche Freiflächenphotovoltaik-Ausrichtung maximiert das Erlöspotenzial über 20 Jahre im Rahmen des deutschen EEG-Direktvermarktungsregimes? Diese Studie analysiert sechs bifaziale Konfigurationen — vertikal 90° ost-/westausgerichtet sowie konventionell 30° nach Süden geneigt — bei zwei EEG-§35a-Leistungsschwellen (999 kWp und 1.001 kWp) in Bayern über einen vollständigen Zeitraum von 2026 bis 2045. Durch die Kombination von PV*SOL-Ertragssimulationen mit SMARD-Marktdaten und netztransparenz.de-Monatsmarktwertprojektionen quantifiziert die Studie, wie Ausrichtung, EEG-Tarifstruktur und §51-Abschneidung bei negativen Preisen gemeinsam das langfristige Erlöspotenzial für Agrivoltaik- und Freiflächenanlagen bestimmen.",
+    m1: "<b>PV-Simulation:</b> PV*SOL Premium mit DWD-Stündlichstrahlungsdaten der Station Nürnberg (8.784 Stunden, 2024); alle sechs Systeme bifazial, Freifläche, Bayern; bifazialer Rückseitenertrag und Verschmutzungsverluste einbezogen",
+    m2: "<b>Marktdaten:</b> SMARD Day-Ahead-Preise + netztransparenz.de Monatsmarktwert 2024; Marktprämie je Stunde = (AW − MMW) × förderfähige MWh, sofern AW &gt; MMW; Preisreihen für 2026–2045 projiziert",
+    m3: "<b>Erlöskennzahl:</b> SUM PV — abdiskontierter Barwert der kumulierten 20-Jahres-Direktvermarktungserlöse (Spot + Marktprämie); CAPEX ausgeschlossen, um ausrichtungsbedingte Erlösunterschiede zu isolieren",
+    m4: "<b>Finanzparameter:</b> Diskontierungssatz 4 % · LUXOR Solar Datenblatt-Degradation: 1,0 % im 1. Jahr, danach 0,345 %/Jahr linear für die verbleibenden 19 Jahre",
+    m5: "<b>Szenarien:</b> Mit §51-EEG-Abschneidung (kein Erlös bei negativen Day-Ahead-Preisen) und ohne Abschneidung; Degradation in beiden Szenarien identisch für alle sechs Konfigurationen angewandt",
+    th_orient: "Ausrichtung", th_vs: "gg. S30_1MWp",
+    orient_west: "Vertikal 90° West", orient_east: "Vertikal 90° Ost", orient_south: "Süd 30° Neigung",
+    td_baseline: "Referenz",
+    table_note: "AW = Anzulegender Wert (EEG-Vergütungssatz). SUM PV = abdiskontierter 20-Jahres-Barwert der Direktvermarktungserlöse (Spot + Marktprämie). LUXOR-Degradation und §51-Abschneidung angewandt. Alle Systeme bifazial, Bayern, 2026–2045.",
+    leg1: "West 90° · &lt;1 MW (Sieger)", leg2: "West 90° · ≥1 MW", leg3: "Ost 90° · &lt;1 MW", leg4: "Ost 90° · ≥1 MW", leg5: "Süd 30° Referenz",
+    svg_baseline: "Referenz",
+    fd_lbl1: "Erlösvorteil gegenüber Referenz",
+    fd_txt1: "W90_999kWp übertrifft S30_1MWp um <b>54,9 %</b> über 20 abdiskontierte Jahre. Westausgerichtete Module erzeugen ihren Spitzenwert am Abend, wenn Day-Ahead-Preise strukturell höher sind als mittags — dies steigert den Erlös bei vergleichbaren Energieerträgen. In Verbindung mit dem Agrivoltaik-EEG-Tarif von 95,0 €/MWh entsteht ein synergetischer Doppelvorteil gegenüber südausgerichteten Alternativen.",
+    fd_lbl2: "EEG-§35a-Leistungsschwellenwert",
+    fd_txt2: "Eine Anlagenleistung unter 1 MW (999 kWp) schaltet den Agrivoltaik-EEG-Tarif frei — 95,0 gegenüber 82,3 €/MWh für ≥1-MW-Systeme. Diese einzige projektbezogene Größenentscheidung — der Unterschied zwischen 999 kWp und 1.001 kWp — ist für die West-Konfiguration über 20 Jahre ca. <b>267.000 € an zusätzlichem abdiskontierten Erlös</b> wert.",
+    fd_lbl3: "Ausrichtungswert — Politikunabhängig",
+    fd_txt3: "Im „Basisszenario" — alle sechs Systeme mit dem gleichen EEG-Referenztarif von 70,3 €/MWh, Agrivoltaik-Politikvorteil vollständig entfernt — führt W90_999kWp immer noch um <b>+30,6 %</b>. Das ausrichtungsbedingte Markt-Timing, nicht die EEG-Tarifstruktur allein, ist der primäre Werttreiber.",
+    fd_lbl4: "§51-EEG-Abschneidungseffekt",
+    fd_txt4: "Die Anwendung der §51-Abschneidung — kein Erlös bei negativen Day-Ahead-Preisen — <b>verbessert</b> den Erlös aller Konfigurationen um +1,2 % bis +2,5 %. Energie bei negativen Preisen zu verkaufen reduziert die kumulierten Einnahmen aktiv — die Abschneidung verhindert diese Verluste. Dieses kontraintuitive Ergebnis hat direkte Auswirkungen auf die Wechselrichter-Einspeisesteuerung bei netzgekoppelten Agri-PV-Projekten.",
+    scenarios_body: "<b>Primär:</b> §51-Abschneidung angewandt · LUXOR-Degradation (1,0 % J.1 → 0,345 %/J.)<br><b>Sekundär:</b> Ohne §51-Abschneidung · gleiche Degradation<br><b>Basis:</b> Einheitlicher AW 70,3 €/MWh · Abschneidung + Degradation angewandt",
+    conclusion_body: "Vertikal westausgerichtete bifaziale Systeme unter 1 MW übertreffen konventionelle südausgerichtete Anlagen um <b>54,9 %</b> beim 20-Jahres-Erlös im deutschen EEG-Rahmen. Die Kombination aus <b>95,0 €/MWh</b> Agrivoltaik-Tarif und einem morgenkomplementären Erzeugungsprofil macht diese Konfiguration für Grundstückseigentümer und Netzbetreiber strategisch überlegen — ein überzeugendes Argument für die Agrivoltaik in der Post-EEG-Übergangsplanung."
+  }
+};
+
+let currentLang = 'en';
+
+function applyLang(lang) {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    const val = T[lang][key];
+    if (val === undefined) return;
+    if (el.closest('svg')) {
+      el.textContent = val;
+    } else {
+      el.innerHTML = val;
+    }
+  });
+  document.getElementById('opt-en').className = 'lopt' + (lang === 'en' ? ' active' : '');
+  document.getElementById('opt-de').className = 'lopt' + (lang === 'de' ? ' active' : '');
+  document.documentElement.lang = lang;
+  currentLang = lang;
+}
+
+function toggleLang() {
+  applyLang(currentLang === 'en' ? 'de' : 'en');
+}
+</script>
 </body>
 </html>
